@@ -1,0 +1,70 @@
+.input-group 
+{
+    overflow: hidden;
+
+    
+
+    .input{
+        
+        position: relative;
+        animation-name:appear;
+        animation-duration: 1.5s;
+        padding:0 100px;
+        height : 100%;
+        background-color: transparent;
+        color : #4c4c4c;
+        border:none;
+        background-color: #f4fffc;
+        border-radius: 4%;
+        box-shadow: 5px 2px 8px 0px #33333378;
+        text-align: center;
+        font-size: 2rem;
+        transition: left 2s ease;
+
+    }
+
+    .input:focus 
+    {
+        outline: none;
+        text-align : left;
+     
+        
+    }
+    .input:focus::placeholder
+    {
+        color : transparent
+    }
+    .input::placeholder
+    {
+        color : #4c4c4c;
+        
+    }
+
+}
+@keyframes appear {
+    from{
+        left : -500%;
+    }
+    to{
+        left : 0%;
+    }
+
+
+}
+
+@media (max-width : 575px) {
+    .locationForm
+    {
+        .input{
+            text-align: center;
+            padding: 0 50px;
+        }
+        .input:focus 
+    {
+        outline: none;
+        text-align : center;
+     
+        
+    }
+    }
+}

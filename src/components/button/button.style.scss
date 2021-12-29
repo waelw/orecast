@@ -1,0 +1,17 @@
+.customButton
+{
+    background-color: #7f9993;
+    outline: none;
+    border : none;
+    padding :10px 20px;
+    font-size: 1.2em;
+    border-radius:5%;
+    margin :30px 0 ;
+    box-shadow: 2px 2px 8px 0px #33333378;
+}
+.inverted{
+    background-color: #f4fffc;
+}
+.customButton:active{
+    box-shadow: none;
+}
