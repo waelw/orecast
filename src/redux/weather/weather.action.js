@@ -19,7 +19,7 @@ export const fetchAsync = (location) => {
     return dispatch => {
         let data = null
         dispatch(fetchStart())
-        fetch(`http://api.weatherapi.com/v1/forecast.json?key=cc0be04034ee4a7c80580524210312&q=${location}&days=7`)
+        fetch(`https://api.weatherapi.com/v1/forecast.json?key=cc0be04034ee4a7c80580524210312&q=${location}&days=7`)
             .then(async res => {
                 data = await res.json()
                 console.log(data)
