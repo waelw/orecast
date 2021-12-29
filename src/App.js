@@ -1,10 +1,11 @@
-import { Route, Switch, Redirect } from 'react-router-dom';
-import './App.css';
+import { Route } from 'react-router-dom';
 import LocationSet from "./Pages/locationSetPage/locationSetPage.page"
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { currentLocationselector } from './redux/location/location.selector';
 import WeatherPage from './Pages/weatherPage/waether.page';
+import { Navigate, Routes } from 'react-router';
+import './App.css';
 
 function App({ location }) {
 
@@ -19,11 +20,10 @@ function App({ location }) {
       height: "100vh",
       width: "100vw"
     }}>
-      <Switch>
-        <Route exact path="/" component={LocationSet} ></Route>
-        <Route exact path="/weather" render={() => location ? <WeatherPage></WeatherPage> : <Redirect to="/"></Redirect>}></Route>
-        <Route path="/weather/r" render={() => <p>hello</p>}></Route>
-      </Switch>
+      <Routes>
+        <Route exact path="/" element={<LocationSet></LocationSet>} ></Route>
+        <Route exact path="/weather" element={location ? <WeatherPage></WeatherPage> : <Navigate to="/"></Navigate>}></Route>
+      </Routes>
     </div >
   );
 }

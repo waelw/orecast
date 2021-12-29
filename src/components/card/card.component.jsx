@@ -1,11 +1,8 @@
 import React from 'react'
-import { Avatar, Card, CardContent, CardHeader, Typography, useMediaQuery } from '@mui/material'
-import { useTheme } from '@mui/material/styles';
+import { Card, CardContent, CardHeader, Typography, } from '@mui/material'
 
 
 const CardItem = ({ weather }) => {
-    const theme = useTheme();
-    const matches = useMediaQuery(theme.breakpoints.up('sm'));
     const today = new Date(weather.date).toLocaleDateString('default', { weekday: "short" })
     return (
         <div>

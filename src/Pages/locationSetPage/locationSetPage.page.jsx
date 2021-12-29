@@ -1,5 +1,6 @@
 import React from "react"
 import { connect } from "react-redux"
+import { useNavigate } from "react-router"
 import CButton from "../../components/button/button.component"
 import FInput from "../../components/inputField/formInput.component"
 import { locationUpdate } from "../../redux/location/location.action"
@@ -10,12 +11,13 @@ function handleChange(e) {
     location = e.target.value
 }
 
-const LocationSet = ({ updateLocation, history, match }) => {
+const LocationSet = ({ updateLocation, match }) => {
+    const navigate = useNavigate()
 
     const handleSubmit = (e) => {
         e.preventDefault()
         updateLocation(location)
-        history.push(`${match.url}weather`)
+        navigate("/weather")
     }
     return (
         <div className="locationSet">

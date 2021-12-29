@@ -5,7 +5,7 @@ import { createStructuredSelector } from "reselect";
 import "./weather.style.scss"
 import { fetchAsync } from "../../redux/weather/weather.action";
 import { currentForecast, currentWaetherSelector, isLoadingCheck } from "../../redux/weather/weather.selector";
-import { Container, Grid, Hidden, useMediaQuery } from "@mui/material";
+import { Container, Grid, Hidden, } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import Details from "../../components/details-section/details.component"
 import Hero from "../../components/hero/hero.component"
@@ -41,8 +41,7 @@ const WeatherPage = ({ location, fetchStart, forecast, loading }) => {
                             {
                                 forecast.map((item) => (
                                     <Grid
-                                        sx={{ backgroundColor: "inherit" }}
-                                        sx={{ padding: "0px" }}
+                                        sx={{ backgroundColor: "inherit", padding: "0px" }}
                                         px="0px"
                                         xs={12 / 7}
                                         item>
