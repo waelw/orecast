@@ -21,10 +21,10 @@ const useStyles = makeStyles({
 const WeatherPage = ({ location, fetchStart, forecast, loading }) => {
 
     const classes = useStyles()
-    useEffect(() => {
-        fetchStart(location)
-    }, [location, fetchStart])
-    forecast = [...forecast, ...forecast, forecast[0]]
+    useEffect(async () => {
+        await fetchStart(location)
+    }, [])
+    forecast = forecast ? [...forecast, ...forecast, forecast[0]] : []
     return (
 
         <div className="weatherPage">
