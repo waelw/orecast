@@ -4,13 +4,14 @@ import { currentLocationselector } from "../../redux/location/location.selector"
 import { createStructuredSelector } from "reselect";
 import "./weather.style.scss"
 import { fetchAsync } from "../../redux/weather/weather.action";
-import { currentForecast, currentWaetherSelector, isLoadingCheck } from "../../redux/weather/weather.selector";
+import { currentForecast, currentForecastErr, currentWaetherSelector, isLoadingCheck } from "../../redux/weather/weather.selector";
 import { Container, Grid, Hidden, } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import Details from "../../components/details-section/details.component"
 import Hero from "../../components/hero/hero.component"
 import CardItem from "../../components/card/card.component";
 import WithSpinner from "../../components/withSpinner/withSpinner.component";
+import { useNavigate } from "react-router";
 
 const GridWithSpinner = WithSpinner(Grid)
 const useStyles = makeStyles({
@@ -18,12 +19,19 @@ const useStyles = makeStyles({
         paddingTop: 100,
     }
 })
-const WeatherPage = ({ location, fetchStart, forecast, loading }) => {
+const WeatherPage = ({ location, fetchStart, forecast, loading, error }) => {
+
+
+    const navigate = useNavigate()
 
     const classes = useStyles()
     useEffect(async () => {
         await fetchStart(location)
     }, [])
+    console.log(error)
+    if (error) {
+        navigate("/")
+    }
     forecast = forecast ? [...forecast, ...forecast, forecast[0]] : []
     return (
 
@@ -74,7 +82,8 @@ const mapStateToProps = createStructuredSelector({
     location: currentLocationselector,
     weather: currentWaetherSelector,
     forecast: currentForecast,
-    loading: isLoadingCheck
+    loading: isLoadingCheck,
+    error: currentForecastErr
 })
 
 export default connect(mapStateToProps, mapDispacthToProps)(WeatherPage)

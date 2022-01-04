@@ -8,7 +8,7 @@ import weatherReducer from "./weather/wether.reducer";
 const persistConfig = {
     key: "root",
     storage: storage,
-    whitelist: ["location", "weather"]
+    whitelist: ["location"]
 }
 
 

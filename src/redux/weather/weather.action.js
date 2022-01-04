@@ -16,17 +16,18 @@ export const fetchFail = (err) => ({
 
 
 export const fetchAsync = (location) => {
-    return dispatch => {
+    return async dispatch => {
         let data = null
         dispatch(fetchStart())
-        fetch(`https://api.weatherapi.com/v1/forecast.json?key=cc0be04034ee4a7c80580524210312&q=${location}&days=7`)
+        await fetch(`https://api.weatherapi.com/v1/forecast.json?key=cc0be04034ee4a7c80580524210312&q=${location}&days=7`)
             .then(async res => {
                 data = await res.json()
-                console.log(data)
-                dispatch(fetchSucc(data))
+                if (data.error) {
+                    dispatch(fetchFail(data.error))
+                }
+                else
+                    dispatch(fetchSucc(data))
             })
-            .catch(async err => {
-                dispatch(fetchFail(err))
-            })
+
     }
 }

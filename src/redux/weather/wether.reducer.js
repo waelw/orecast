@@ -11,13 +11,15 @@ const weatherReducer = (state = INITAIL_STATE, action) => {
         case weatherType.WEATHER_FETCH_START:
             return {
                 ...state,
-                loading: true
+                loading: true,
+                error: null
             }
         case weatherType.WEATHER_FETCH_SUCC:
             return {
                 ...state,
                 currerntWeather: action.payload,
-                loading: false
+                loading: false,
+                error: null
             }
         case weatherType.WEATHER_FETCH_FAIL:
             return {
