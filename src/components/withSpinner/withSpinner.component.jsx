@@ -6,7 +6,7 @@ import React from 'react'
 
 const Spinner = () => (
     <div className="withSpinner">
-        <CircularProgress></CircularProgress>
+        <CircularProgress color="secondary"></CircularProgress>
     </div>
 )
 const WithSpinner = (WrappedCompoonent) => ({ isLoading, children, ...props }) => {
