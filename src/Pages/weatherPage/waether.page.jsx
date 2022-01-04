@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { currentLocationselector } from "../../redux/location/location.selector";
 import { createStructuredSelector } from "reselect";
-import "./weather.style.scss"
 import { fetchAsync } from "../../redux/weather/weather.action";
 import { currentForecast, currentForecastErr, currentWaetherSelector, isLoadingCheck } from "../../redux/weather/weather.selector";
 import { Container, Grid, Hidden, } from "@mui/material";
@@ -28,7 +27,6 @@ const WeatherPage = ({ location, fetchStart, forecast, loading, error }) => {
     useEffect(async () => {
         await fetchStart(location)
     }, [])
-    console.log(error)
     if (error) {
         navigate("/")
     }

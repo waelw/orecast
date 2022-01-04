@@ -1,12 +1,16 @@
-import { CircularProgress } from '@mui/material'
-import "./withspinner.style.scss"
+import { CircularProgress, Grid } from '@mui/material'
 import React from 'react'
 
 
 
 const Spinner = () => (
     <div className="withSpinner">
-        <CircularProgress color="secondary"></CircularProgress>
+        <Grid container sx={{ minHeight: "100vh" }} direction={"column"} justifyContent={"center"} alignItems={"center"}>
+            <Grid item xs="12">
+                <CircularProgress color="secondary"></CircularProgress>
+            </Grid>
+        </Grid>
+        {/* <CircularProgress color="secondary"></CircularProgress> */}
     </div>
 )
 const WithSpinner = (WrappedCompoonent) => ({ isLoading, children, ...props }) => {
